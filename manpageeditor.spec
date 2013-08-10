@@ -13,7 +13,7 @@ Source0:		http://keithhedger.hostingsiteforfree.com/zips/manpageeditor/%{oname}-
 
 BuildRequires:		desktop-file-utils
 BuildRequires:		pkgconfig(gtksourceview-2.0)
-
+BuildRequires:      imagemagick
 
 
 %description
