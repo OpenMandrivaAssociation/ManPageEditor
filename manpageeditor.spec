@@ -8,7 +8,7 @@ Release:		1
 Summary:		Manual pages editor
 License:		GPLv2
 Group:			Books/Howtos
-URL:			http://gnomefiles.org/content/show.php/Man+Page+Editor+?content=160219&PHPSESSID=3ccc8aaad076b075e5cfdcd4b533c357
+URL:			http://keithhedger.hostingsiteforfree.com/pages/manpageeditor/help.html
 Source0:		http://keithhedger.hostingsiteforfree.com/zips/manpageeditor/%{oname}-0.0.4.tar.gz
 
 BuildRequires:		desktop-file-utils
