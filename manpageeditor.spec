@@ -3,18 +3,19 @@
 %define distsuffix mrb
 
 Name:			manpageeditor
-Version:		0.0.4
+Version:		0.0.6
 Release:		1
 Summary:		Manual pages editor
-License:		GPLv2
+License:		GPLv3
 Group:			Books/Howtos
-URL:			http://keithhedger.hostingsiteforfree.com/pages/manpageeditor/help.html
-Source0:		http://keithhedger.hostingsiteforfree.com/zips/manpageeditor/%{oname}-0.0.4.tar.gz
+URL:			http://gnomefiles.org/content/show.php/Man+Page+Editor+?content=160219&PHPSESSID=3ccc8aaad076b075e5cfdcd4b533c357
+Source0:		http://keithhedger.hostingsiteforfree.com/zips/manpageeditor/%{oname}-%{version}.tar.gz
+
 
 BuildRequires:		desktop-file-utils
 BuildRequires:		pkgconfig(gtksourceview-2.0)
-BuildRequires:      imagemagick
-BuildRequires:      aspell-devel
+BuildRequires:      	aspell-devel
+BuildRequires:     	imagemagick
 
 
 %description
@@ -22,21 +23,25 @@ Create,edit man-pages.
 
 %prep
 %setup -q -n %{oname}-%{version}
-
+cp -r ManPageEditor/resources/docs/gpl-3.0.txt gpl-3.0.txt
 
 %build
 %configure --prefix=/usr --enable-aspell
 %make
 
+# to be fix properly
+perl -pi -e "s|xdg-icon-resource install --context mimetypes --size 128 ManPageEditor/resources/documenticons/maneditdoc.png application-x-maneditdoc||" Makefile
+perl -pi -e "s|xdg-mime install ManPageEditor/resources/documenticons/maneditdoc-mime.xml||" Makefile
+perl -pi -e "s|update-mime-database /usr/share/mime||" Makefile
+perl -pi -e "s|gtk-update-icon-cache --force /usr/share/icons/hicolor||" Makefile
+
+
+
 %install
-%makeinstall_std
+%makeinstall_std 
 
 # menu entry
-desktop-file-install %{buildroot}%{_datadir}/applications/%{oname}.desktop \
-	--remove-key=Encoding \
-	--remove-key=Icon \
-	--set-icon=%{oname} \
-	--remove-key=Version
+desktop-file-install ManPageEditor/resources/applications/ManPageEditor.desktop
 	
 
 # icons	
@@ -45,9 +50,10 @@ convert ManPageEditor/resources/pixmaps/%{oname}.png -resize 32x32 $RPM_BUILD_RO
 convert ManPageEditor/resources/pixmaps/%{oname}.png -resize 16x16 $RPM_BUILD_ROOT%{_miconsdir}/%{oname}.png
 convert ManPageEditor/resources/pixmaps/%{oname}.png -resize 48x48 $RPM_BUILD_ROOT%{_liconsdir}/%{oname}.png
 
+rm -fr $RPM_BUILD_ROOT%{_datadir}/%{oname}/docs
 
 %files
-%doc ChangeLog 
+%doc ChangeLog gpl-3.0.txt
 %{_bindir}/%{name}
 %{_datadir}/applications/%{oname}.desktop
 %{_datadir}/%{oname}/examples/*
