@@ -41,8 +41,13 @@ perl -pi -e "s|gtk-update-icon-cache --force /usr/share/icons/hicolor||" Makefil
 %makeinstall_std 
 
 # menu entry
-desktop-file-install ManPageEditor/resources/applications/ManPageEditor.desktop
-	
+%if %{mdvver} == 201200
+cd ManPageEditor/resources/applications
+desktop-file-install %{buildroot}%{_datadir}/applications/ManPageEditor.desktop
+cd -
+%else
+desktop-file-install 	ManPageEditor/resources/applications/ManPageEditor.desktop
+%endif
 
 # icons	
 install -d -m755 $RPM_BUILD_ROOT{%{_miconsdir},%{_iconsdir},%{_liconsdir}}
