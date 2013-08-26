@@ -43,7 +43,7 @@ perl -pi -e "s|gtk-update-icon-cache --force /usr/share/icons/hicolor||" Makefil
 # menu entry
 %if %{mdvver} == 201200
 cd ManPageEditor/resources/applications
-desktop-file-install \
+desktop-file-install ManPageEditor.desktop \
 	--dir=%{buildroot}%{_datadir}/applications/ManPageEditor.desktop
 cd -
 %else
