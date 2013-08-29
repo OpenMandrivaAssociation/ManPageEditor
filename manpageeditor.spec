@@ -31,6 +31,10 @@ cp -r ManPageEditor/resources/docs/gpl-3.0.txt gpl-3.0.txt
 # to be fix properly
 perl -pi -e "s|update-mime-database /usr/share/mime||" Makefile
 perl -pi -e "s|gtk-update-icon-cache --force /usr/share/icons/hicolor||" Makefile
+perl -pi -e "s|xdg-icon-resource install --context mimetypes --size 256 ManPageEditor/resources/documenticons/256/maneditdoc.png application-x-maneditdoc||" Makefile
+perl -pi -e "s|xdg-icon-resource install --context mimetypes --size 128 ManPageEditor/resources/documenticons/128/maneditdoc.png application-x-maneditdoc||" Makefile
+perl -pi -e "s|xdg-icon-resource install --context mimetypes --size 48 ManPageEditor/resources/documenticons/48/maneditdoc.png application-x-maneditdoc||" Makefile
+perl -pi -e "s|xdg-mime install ManPageEditor/resources/documenticons/maneditdoc-mime.xml||" Makefile
 
 %make
 
