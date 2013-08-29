@@ -27,23 +27,18 @@ cp -r ManPageEditor/resources/docs/gpl-3.0.txt gpl-3.0.txt
 
 %build
 %configure --prefix=/usr --enable-aspell
-%make
-
 # to be fix properly
-perl -pi -e "s|xdg-icon-resource install --context mimetypes --size 128 ManPageEditor/resources/documenticons/maneditdoc.png application-x-maneditdoc||" Makefile
-perl -pi -e "s|xdg-mime install ManPageEditor/resources/documenticons/maneditdoc-mime.xml||" Makefile
 perl -pi -e "s|update-mime-database /usr/share/mime||" Makefile
 perl -pi -e "s|gtk-update-icon-cache --force /usr/share/icons/hicolor||" Makefile
 
-
+%make
 
 %install
+
 %makeinstall_std 
 
 # menu entry fix
 desktop-file-install $RPM_BUILD_ROOT%{_datadir}/applications/%{oname}.desktop
-
-
 # icons	
 install -d -m755 $RPM_BUILD_ROOT{%{_miconsdir},%{_iconsdir},%{_liconsdir}}
 convert ManPageEditor/resources/pixmaps/%{oname}.png -resize 32x32 $RPM_BUILD_ROOT%{_iconsdir}/%{oname}.png
