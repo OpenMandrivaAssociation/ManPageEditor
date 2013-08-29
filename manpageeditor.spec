@@ -3,7 +3,7 @@
 %define distsuffix mrb
 
 Name:			manpageeditor
-Version:		0.0.8
+Version:		0.0.9
 Release:		1
 Summary:		Manual pages editor
 License:		GPLv3
@@ -19,7 +19,7 @@ BuildRequires:     	imagemagick
 
 
 %description
-Create,edit man-pages.
+Create,edit,import,preview man-pages.
 
 %prep
 %setup -q -n %{oname}-%{version}
@@ -40,8 +40,8 @@ perl -pi -e "s|gtk-update-icon-cache --force /usr/share/icons/hicolor||" Makefil
 %install
 %makeinstall_std 
 
-# menu entry
-desktop-file-install 	ManPageEditor/resources/applications/ManPageEditor.desktop
+# menu entry fix
+desktop-file-install $RPM_BUILD_ROOT%{_datadir}/applications/%{oname}.desktop
 
 
 # icons	
