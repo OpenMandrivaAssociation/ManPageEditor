@@ -16,7 +16,7 @@ BuildRequires:		desktop-file-utils
 BuildRequires:		pkgconfig(gtksourceview-2.0)
 BuildRequires:      	aspell-devel
 BuildRequires:     	imagemagick
-BuildRequires:     	xdg-utils
+
 
 
 %description
@@ -35,11 +35,12 @@ perl -pi -e "s|gtk-update-icon-cache --force /usr/share/icons/hicolor||" Makefil
 %make
 
 %install
-
 %makeinstall_std 
 
 # menu entry fix
-desktop-file-install $RPM_BUILD_ROOT%{_datadir}/applications/%{oname}.desktop
+rm -fr $RPM_BUILD_ROOT%{_datadir}/applications/%{oname}.desktop
+desktop-file-install ManPageEditor/resources/applications/ManPageEditor.desktop \
+	--dir=$RPM_BUILD_ROOT%{_datadir}/applications/%{oname}.desktop
 # icons	
 install -d -m755 $RPM_BUILD_ROOT{%{_miconsdir},%{_iconsdir},%{_liconsdir}}
 convert ManPageEditor/resources/pixmaps/%{oname}.png -resize 32x32 $RPM_BUILD_ROOT%{_iconsdir}/%{oname}.png
