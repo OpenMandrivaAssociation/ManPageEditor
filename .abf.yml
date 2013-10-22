@@ -1,8 +1,5 @@
 sources:
-  "ManPageEditor-0.0.4.tar.gz": f5004f329e9e1d17963166465c1ba37cfd2302ce
-  ManPageEditor-0.0.6.tar.gz: c302d4d7e41c27d6c2c85fd76b0b007686a76cf8
-  ManPageEditor-0.0.7.tar.gz: f149dc8380ae0a178b2615af745169630b129d8c
-  ManPageEditor-0.0.8.tar.gz: a7224bd2ce17f370510af1e2a0576e626d2d6d02
-  ManPageEditor-0.0.9.tar.gz: 2c101d33c324c0bc75ddb1b92ea65f8946933e44
+
   ManPageEditor-0.0.10.tar.gz: 13e9bd2e10235d0e4f6e27fda445f7964788041e
   ManPageEditor-0.0.11.tar.gz: 612d017bd44067d089abe74191751a5f5e1d7bc4
+  ManPageEditor-0.0.13.tar.gz: 1ba87b9d604cf0316e5d5c0cc52c880127889807

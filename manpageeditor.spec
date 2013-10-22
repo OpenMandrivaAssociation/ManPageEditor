@@ -3,7 +3,7 @@
 %define distsuffix mrb
 
 Name:			manpageeditor
-Version:		0.0.11
+Version:		0.0.13
 Release:		1
 Summary:		Manual pages editor
 License:		GPLv3
@@ -18,7 +18,6 @@ BuildRequires:      	aspell-devel
 BuildRequires:     	imagemagick
 
 
-
 %description
 Create,edit,import,preview man-pages.
 
@@ -28,7 +27,7 @@ cp -r ManPageEditor/resources/docs/gpl-3.0.txt gpl-3.0.txt
 
 %build
 %configure --prefix=/usr --enable-aspell
-# to be fix properly
+# this should be done at the install time not  now
 perl -pi -e "s|update-mime-database /usr/share/mime||" Makefile
 perl -pi -e "s|gtk-update-icon-cache --force /usr/share/icons/hicolor||" Makefile
 perl -pi -e "s|xdg-icon-resource install --context mimetypes --size 256 ManPageEditor/resources/documenticons/256/maneditdoc.png application-x-maneditdoc||" Makefile
@@ -39,13 +38,11 @@ perl -pi -e "s|xdg-mime install ManPageEditor/resources/documenticons/maneditdoc
 %make
 
 %install
+
 %makeinstall_std 
 
 # menu entry fix
-rm -fr $RPM_BUILD_ROOT%{_datadir}/applications/%{oname}.desktop
-desktop-file-install ManPageEditor/resources/applications/ManPageEditor.desktop \
-	--dir=$RPM_BUILD_ROOT%{_datadir}/applications
-    
+desktop-file-install $RPM_BUILD_ROOT%{_datadir}/applications/%{oname}.desktop
 # icons	
 install -d -m755 $RPM_BUILD_ROOT{%{_miconsdir},%{_iconsdir},%{_liconsdir}}
 convert ManPageEditor/resources/pixmaps/%{oname}.png -resize 32x32 $RPM_BUILD_ROOT%{_iconsdir}/%{oname}.png
