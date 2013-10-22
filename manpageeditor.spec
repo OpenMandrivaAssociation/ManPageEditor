@@ -42,8 +42,9 @@ perl -pi -e "s|xdg-mime install ManPageEditor/resources/documenticons/maneditdoc
 %makeinstall_std 
 
 # menu entry fix for lts		
-rm -fr $RPM_BUILD_ROOT%{_datadir}/applications/%{oname}.desktop		
-desktop-file-install ManPageEditor/resources/applications/ManPageEditor.desktop 
+rm -fr $RPM_BUILD_ROOT%{_datadir}/applications/%{oname}.desktop
+desktop-file-install ManPageEditor/resources/applications/ManPageEditor.desktop \
+	--dir=$RPM_BUILD_ROOT%{_datadir}/applications
 
 # icons	
 install -d -m755 $RPM_BUILD_ROOT{%{_miconsdir},%{_iconsdir},%{_liconsdir}}
