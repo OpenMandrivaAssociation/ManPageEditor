@@ -3,7 +3,7 @@
 %define distsuffix mrb
 
 Name:			manpageeditor
-Version:		0.0.11
+Version:		0.0.13
 Release:		1
 Summary:		Manual pages editor
 License:		GPLv3
@@ -27,7 +27,7 @@ cp -r ManPageEditor/resources/docs/gpl-3.0.txt gpl-3.0.txt
 
 %build
 %configure --prefix=/usr --enable-aspell
-# to be fix properly
+# this should be done at the install time not  now
 perl -pi -e "s|update-mime-database /usr/share/mime||" Makefile
 perl -pi -e "s|gtk-update-icon-cache --force /usr/share/icons/hicolor||" Makefile
 perl -pi -e "s|xdg-icon-resource install --context mimetypes --size 256 ManPageEditor/resources/documenticons/256/maneditdoc.png application-x-maneditdoc||" Makefile
