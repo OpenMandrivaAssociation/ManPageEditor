@@ -1,6 +1,6 @@
 %define oname ManPageEditor
-%define debug_package	%{nil}
-%define distsuffix mrb
+#define debug_package	%{nil}
+#define distsuffix mrb
 
 Name:			manpageeditor
 Version:		0.0.13
