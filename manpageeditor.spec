@@ -4,7 +4,7 @@
 #define distsuffix mrb
 
 Name:			manpageeditor
-Version:		0.0.13
+Version:		0.0.14
 Release:		3
 Summary:		Manual pages editor
 License:		GPLv3
