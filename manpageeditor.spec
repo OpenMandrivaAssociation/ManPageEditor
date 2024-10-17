@@ -8,7 +8,7 @@ Release:		1
 Summary:		Manual pages editor
 License:		GPLv3
 Group:			Books/Howtos
-URL:			http://keithhedger.hostingsiteforfree.com/
+URL:			https://keithhedger.hostingsiteforfree.com/
 Source0:		http://keithhedger.hostingsiteforfree.com/zips/manpageeditor/%{oname}-%{version}.tar.gz
 BuildRequires:		desktop-file-utils
 BuildRequires:		pkgconfig(gtksourceview-2.0)
