@@ -10,6 +10,11 @@ License:		GPLv3
 Group:			Books/Howtos
 URL:			https://keithhedger.hostingsiteforfree.com/
 Source0:		http://keithhedger.hostingsiteforfree.com/zips/manpageeditor/%{oname}-%{version}.tar.gz
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:		desktop-file-utils
 BuildRequires:		pkgconfig(gtksourceview-2.0)
 BuildRequires:   	aspell-devel
